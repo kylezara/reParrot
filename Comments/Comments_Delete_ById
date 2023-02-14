@@ -1,0 +1,53 @@
+USE [ReParrot]
+GO
+/****** Object:  StoredProcedure [dbo].[Comments_Delete_ById]    Script Date: 1/5/2023 1:58:31 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:	Kyle Zarate
+-- Create date: 12/27/2022
+-- Description:	Comments Delete by Id (Soft Delete)
+-- Code Reviewer: Kathy Xayasomloth
+
+
+-- MODIFIED BY: author
+-- MODIFIED DATE:
+-- Code Reviewer: 
+-- Note: 
+-- =============================================
+
+CREATE proc [dbo].[Comments_Delete_ById] 
+
+			@Id int
+
+as
+
+/*---------------TEST CODE------------------
+
+	Declare  @Id int = 4
+
+	Select *
+	From [dbo].[Comments]
+	Where Id = @Id
+
+	Execute [dbo].[Comments_Delete_ById] @Id
+
+	Select *
+	From [dbo].[Comments]
+	Where Id = @Id
+
+*/
+
+BEGIN
+
+	UPDATE	 [dbo].[Comments]
+
+	SET		[IsDeleted] = 1
+
+	WHERE Id = @Id
+
+END
+GO
