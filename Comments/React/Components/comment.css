@@ -1,0 +1,91 @@
+.comment-form-main {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.comment-container {
+  margin-top: 15px;
+  padding-left: 10px;
+  border-radius: 25px;
+}
+
+.comment-avatar {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.comment-card {
+  width: 35%;
+  margin-bottom: 10px;
+  margin-left: 16px;
+}
+
+.comment-text {
+  margin-top: 1px;
+  margin-left: 57px;
+  font-size: 18px;
+  padding-right: 50px;
+}
+
+.comment-reply {
+  padding-left: 70px;
+}
+
+.comment-name {
+  padding-left: 10px;
+}
+
+.btn-com-card {
+  margin-left: 5px;
+  margin-bottom: 12px;
+}
+
+.btn-update {
+  margin-left: 1px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.btn-cancel {
+  margin-left: 1px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.update-msg {
+  margin-left: 10px;
+}
+
+.admin-del-btn {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.drop-btn {
+  font-size: 10px;
+  margin-left: 1px;
+}
+
+.reply-btn {
+  margin-left: 2px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.delete-item-icon-comment {
+  transition-duration: 0.4s;
+}
+.delete-item-icon-comment:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.edit-item-icon-comment {
+  transition-duration: 0.4s;
+}
+.edit-item-icon-comment:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0);
+}
