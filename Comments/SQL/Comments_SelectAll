@@ -1,0 +1,72 @@
+USE [ReParrot]
+GO
+/****** Object:  StoredProcedure [dbo].[Comments_SelectAll]    Script Date: 1/5/2023 1:58:31 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:	Kyle Zarate
+-- Create date: 12/26/2022
+-- Description:	Comments Select All (Paginated)
+-- Code Reviewer: Kathy Xayasomloth
+
+
+-- MODIFIED BY: Kyle Zarate
+-- MODIFIED DATE: 1/5/2023
+-- Code Reviewer: Kathy Xayasomloth
+-- Note: Removed IsDeleted Column, only select comments where IsDeleted = 0, added ModifiedBy Column
+-- =============================================
+
+CREATE proc [dbo].[Comments_SelectAll]
+
+			 @PageIndex int
+		    ,@PageSize int
+
+as
+
+/*---------------TEST CODE------------------
+
+	Declare  @PageIndex int = 0
+		    ,@PageSize  int = 25
+
+	Execute [dbo].[Comments_SelectAll] @PageIndex, @PageSize
+
+*/
+
+BEGIN
+
+	DECLARE @Offset int = @PageIndex * @PageSize
+
+	SELECT	 c.[Id]
+			,c.[Subject]
+			,c.[Text]
+			,c.[ParentId]
+			,c.[EntityTypeId]
+			,et.[Name] AS EntityTypeName
+			,c.[EntityId]
+			,c.[DateCreated]
+			,c.[DateModified]
+			,c.[CreatedBy]
+			,c.[ModifiedBy]
+			,u.[FirstName]
+			,u.[LastName]
+			,u.[AvatarUrl]
+			,TotalCount = COUNT(1) OVER()
+
+	FROM [dbo].[Comments] as c
+	INNER JOIN dbo.EntityTypes as et
+		on c.EntityTypeId = et.Id
+	INNER JOIN dbo.Users as u
+		on c.CreatedBy = u.Id
+
+	Where c.IsDeleted = 0
+
+	ORDER BY c.[Id]
+
+	OFFSET @offset ROWS
+	FETCH NEXT @PageSize ROWS ONLY
+
+END
+GO
